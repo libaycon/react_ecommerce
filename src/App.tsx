@@ -4,14 +4,16 @@ import {
   Route,
   RouterProvider
 } from 'react-router-dom'
+import Home from './app/home'
+import Login from './app/login'
+import DefaultPage from './app/default'
 
 const router = createBrowserRouter(createRoutesFromElements(
 	<>
-		<Route path='/' element={< div/>} />
-		<Route path='/:country_code/:username/' element={<div/>} errorElement={<div/>} >
+		<Route path='/' element={<Home/>} errorElement={<div/>} >
 			<Route errorElement={<div/>}>
-				<Route index element={<div/>} />
-				<Route path='inventory/' element={<div/>} />
+				<Route index element={<DefaultPage/>} />
+				<Route path='/login' element={<Login/>} />
 				<Route path='*' element={<div/>}/>
 			</Route>
 		</Route>
