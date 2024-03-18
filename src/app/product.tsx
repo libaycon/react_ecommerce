@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { Link, useLocation, useParams } from "react-router-dom"
 import { Product } from "../types/product-types"
 import { ChevronRightIcon, ChevronLeftIcon, MinusIcon, PlusIcon, ShoppingBagIcon } from "@heroicons/react/24/outline"
+import RelatedProduct  from "./ui-components/related-product"
 
 export default function ProductPage() {
     const { state }: { state: Product } = useLocation();
@@ -21,7 +22,7 @@ export default function ProductPage() {
     return product?.id ? (
         <div className="pb-20">
             <div className="flex flex-nowrap items-center line-clamp-1 text-sm text-accent font-semibold select-none px-2">
-                <Link to="/" className="hover:underline">Home</Link> <ChevronRightIcon className="size-4" /> <span className="text-slate-400 line-clamp-1">{product.title}</span>
+                <Link to="/" className="hover:underline">Inicio</Link> <ChevronRightIcon className="size-4" /> <span className="text-slate-400 line-clamp-1">{product.title}</span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8">
                 <div className="flex flex-col gap-8 pb-8 pt-8 md:pt-16">
@@ -69,7 +70,7 @@ export default function ProductPage() {
                             <p className="text-lg font-bold text-primary">{new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(Number(product.price))}</p>
                         </div>
                         <div className="flex flex-row border max-w-[180px] border-accent focus:outline-0 rounded-full h-max [&>button]:h-10 [&>button]:py-1 [&>button]:text-white [&>button]:bg-accent [&>button]:px-4 overflow-hidden">
-                            <button>
+                            <button onClick={() => setQuantity(quantity > 1? quantity-1: 1)}>
                                 <MinusIcon className="size-5" />
                             </button>
                             <input
@@ -78,7 +79,7 @@ export default function ProductPage() {
                                 value={quantity}
                                 onChange={(e) => setQuantity(Number(e.target.value))}
                             />
-                            <button>
+                            <button onClick={() => setQuantity(quantity + 1)}>
                                 <PlusIcon className="size-5" />
                             </button>
                         </div>
@@ -89,7 +90,7 @@ export default function ProductPage() {
                 </div>
             </div>
             <div>
-
+                <RelatedProduct title={product.brand} categoryId={product.categoryId} />
             </div>
         </div>
     ) : (
