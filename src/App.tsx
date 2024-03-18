@@ -7,14 +7,15 @@ import {
 import Home from './app/home'
 import Login from './app/login'
 import DefaultPage from './app/default'
+import ProductPage from './app/product'
 
 const router = createBrowserRouter(createRoutesFromElements(
 	<>
 		<Route path='/' element={<Home/>} errorElement={<div/>} >
-			<Route errorElement={<div/>}>
+			<Route errorElement={<div>HELLO</div>}>
 				<Route index element={<DefaultPage/>} />
 				<Route path='/login' element={<Login/>} />
-				<Route path='*' element={<div/>}/>
+				<Route path='/product/:id' element={<ProductPage/>}/>
 			</Route>
 		</Route>
 	</>

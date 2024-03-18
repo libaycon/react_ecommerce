@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="grid grid-rows-[auto,1fr,auto] min-h-screen size-full">
         <Header/>
-        <div className="h-full">
+        <div className="container p-4 mx-auto h-full">
             <Outlet/>
         </div>
         <Footer />

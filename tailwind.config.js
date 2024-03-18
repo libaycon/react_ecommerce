@@ -48,6 +48,10 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "480px",
+        xxs: "360px"
+      },
       fontFamily: {
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],
         inter: ["Inter", ...defaultTheme.fontFamily.sans],
