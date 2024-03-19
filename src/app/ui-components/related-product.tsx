@@ -34,14 +34,14 @@ export default function RelatedProduct({...rest}: ProductRelatedProps) {
                             <div className="absolute top-0 h-full w-auto rounded-lg bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                             <div className="absolute inset-0 flex size-full items-center justify-center opacity-0 hover:backdrop-blur-[2px] hover:bg-slate-400/20 group-hover:opacity-100">
                                 <button className="border p-1 rounded-md border-white/10 bg-white/20 text-white backdrop-blur hover:bg-white/30 focus:bg-white/30"
-                                    onClick={() => navigation(`/product/${product.id}`, { state: product })}
+                                    onClick={() => navigation(`/product/${product.id}`, /* { state: product } */)}
                                 >
                                     Ver producto
                                 </button>
                             </div>
                         </div>
                         <div className="mt-4">
-                            <Link to={`/product/${product.id}`} state={product} className="text-base px-3 font-medium text-slate-700 line-clamp-1 hover:text-primary focus:text-primary">
+                            <Link to={`/product/${product.id}`} /* state={product} */ className="text-base px-3 font-medium text-slate-700 line-clamp-1 hover:text-primary focus:text-primary">
                                 {product.title}
                             </Link>
                             <div className="my-3 h-px bg-slate-200"></div>

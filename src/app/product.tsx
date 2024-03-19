@@ -12,12 +12,12 @@ export default function ProductPage() {
     const { id } = useParams();
 
     useEffect(() => {
-        if (!state?.id) {
+        if (!state?.id || state.id !== Number(id)) {
             fetch('https://e-commerce-api-v2.academlo.tech/api/v1/products/' + id)
                 .then(response => response.json())
                 .then((data: Product) => setProduct(data));
         }
-    }, [])
+    }, [id, state?.id])
 
     return product?.id ? (
         <div className="pb-20">

@@ -1,0 +1,33 @@
+.drag__bar {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 50%;
+    height: 6px;
+    border-radius: 5px 0 0 5px;
+    background: #d3d3d3;
+    outline: none;
+  }
+  
+  .drag__bar:hover {
+    opacity: 1;
+  }
+  
+  .drag__bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4338ca;
+    cursor: pointer;
+    box-shadow:0px 0px 3px 2px #4338ca;
+  }
+  
+  .drag__bar::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    background: #4338ca;
+    cursor: pointer;
+    box-shadow:0px 0px 11px 8px #4338ca;
+  }

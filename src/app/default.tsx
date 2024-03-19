@@ -1,21 +1,18 @@
-import { useEffect, useState } from "react"
-import { Product } from "../types/product-types"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { ShoppingBagIcon } from "@heroicons/react/24/outline"
+import { SidebarFilter } from "./ui-components/sidebar-filter"
+import  {useProduct} from "../context/product-contex"
 
 export default function DefaultPage() {
-    const [products, setProducts] = useState<Product[]>([])
-    const navigation = useNavigate()
+    const { products, categories } = useProduct();
+    const navigation = useNavigate();
 
-    useEffect(() => {
-        fetch('https://e-commerce-api-v2.academlo.tech/api/v1/products')
-            .then(response => response.json())
-            .then((data: Product[]) => setProducts(data))
-    }, [])
     return (
-        <div>
-            <div></div>
+        <div className="grid grid-cols-[auto,1fr] gap-8">
+            <div className="">
+                <SidebarFilter categories={categories}/>
+            </div>
             <div className="grid xs:grid-cols-2 lg:grid-cols-3 gap-8">
                 {products.map((product, index) => (
                     <div key={`${product.id}-${index}`} className="group border rounded-xl">
@@ -57,3 +54,10 @@ export default function DefaultPage() {
         </div>
     )
 }
+
+
+/* 
+onTouchEnd={handleTouchEnd}
+onTouchMove={handleTouchMove}
+onTouchStart={handleTouchStart}
+*/
