@@ -1,25 +1,39 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
-import { ShoppingBagIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline"
+import { ShoppingBagIcon, MagnifyingGlassIcon, AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline"
 import { SidebarFilter } from "./ui-components/sidebar-filter"
 import { useProduct } from "../context/product-contex"
+import { addToCart } from "./utils/cart-utils"
 
 export default function DefaultPage() {
+    const [showFilter, setShowFilter] = useState<boolean>(false);
     const { products, categories, productsFiltered, search, setSearch } = useProduct();
     const navigation = useNavigate();
 
     return (
-        <div className="grid grid-cols-[auto,1fr] md:gap-8"> 
+        <div className="grid grid-cols-[auto,1fr] md:gap-8">
             <div className="">
-                <SidebarFilter categories={categories} />
+                {!showFilter && (
+                                    <div className={`sticky -translate-x-2 z-10 top-32 md:hidden ${showFilter ? 'hidded' : ''}`}
+                                    onClick={() => setShowFilter(true)}
+                                >
+                                        <button className='rounded-full size-12 bg-primary text-white'>
+                                            <AdjustmentsHorizontalIcon className="size-8 mx-auto" />
+                                        </button>
+                                </div>
+                )}
+                <div className="sticky top-8 z-30">
+                    <SidebarFilter categories={categories} open={showFilter} setOpen={setShowFilter} />
+                </div>
             </div>
             <div>
                 <div className="flex items-center mb-10 relative">
-                    <input type="text" className="w-full pl-6 pr-16 py-2 border rounded-full outline-2 outline-accent" placeholder="Buscar productos" 
+                    <input type="text" className="w-full pl-6 pr-16 py-2 border rounded-full outline-2 outline-accent" placeholder="Buscar productos"
                         value={search} onChange={(e) => setSearch(e.target.value)}
                     />
                     <button className="absolute right-[1px] bg-primary py-2 px-4 rounded-r-full text-white outline-2 outline-accent">
-                        <MagnifyingGlassIcon className="size-6"/>
+                        <MagnifyingGlassIcon className="size-6" />
                     </button>
                 </div>
                 <div className="grid xs:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -51,7 +65,11 @@ export default function DefaultPage() {
                                         </p>
                                     </div>
                                     <div className="text-right">
-                                        <button className="p-2 rounded-full bg-primary text-white hover:bg-primary/80 focus:bg-primary/90 hover:scale-125 transition-all ease-in-out duration-300">
+                                        <button className="p-2 rounded-full bg-primary text-white hover:bg-primary/80 focus:bg-primary/90 hover:scale-125 transition-all ease-in-out duration-300"
+                                            onClick={async () => {
+                                                await addToCart(1, product.id);
+                                            }}
+                                        >
                                             <ShoppingBagIcon className="size-6" />
                                         </button>
                                     </div>

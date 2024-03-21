@@ -10,7 +10,7 @@ export function Header() {
   const token = localStorage.getItem('token');
 
   return (
-    <div className="container mx-auto flex flex-row flex-nowrap justify-between items-center w-full h-16 px-4" >
+    <div className="max-w-[1536px] w-full px-4 md:px-8 mx-auto flex flex-row flex-nowrap justify-between items-center h-16" >
       <Link to="/" className="p-2 text-primary hover:underline hover:underline-offset-2 outline-accent transition-all ease-in-out">
         <span className="text-xl font-bold">Electronic X</span>
       </Link>
