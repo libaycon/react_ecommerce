@@ -20,7 +20,9 @@ export function Header() {
         >
           {token ? <InboxStackIcon className="h-6 w-6 text-accent" /> : <UserIcon className="h-6 w-6 text-accent" />}
         </button>
-        <button className="p-2 ring-accent outline-2 outline-accent hover:scale-105 transition-all ease-in-out">
+        <button className="p-2 ring-accent outline-2 outline-accent hover:scale-105 transition-all ease-in-out"
+          onClick={() => navigate('/user/purchases')}
+        >
           <Squares2X2Icon className="h-6 w-6 text-accent" />
         </button>
         <button className="p-2 ring-accent outline-2 outline-accent hover:scale-105 transition-all ease-in-out"

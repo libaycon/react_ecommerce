@@ -30,11 +30,18 @@ export default function UserPage() {
                     </ul>
                     <ul>
                         <li>
-                            <button className="" onClick={() => {
+                            <NavLink to="">Users</NavLink>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <button className="flex items-center text-white bg-accent px-4 py-1 gap-2 hover:bg-primary rounded-md ring-accent outline-2 outline-accent transition-all ease-in-out" 
+                                onClick={() => {
                                 localStorage.removeItem('token');
                                 setToken(null);
                                 navigate('/login');
-                            }}>
+                            }}
+                            >
                                 <PowerIcon className="h-6 w-6" />
                             Cerrar Session
                             </button>

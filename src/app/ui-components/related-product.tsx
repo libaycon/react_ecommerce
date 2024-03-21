@@ -3,17 +3,18 @@ import { Link } from "react-router-dom"
 import { ShoppingBagIcon } from "@heroicons/react/24/outline"
 import { useNavigate } from "react-router-dom"
 import { Product } from "../../types/product-types";
+import { addToCart } from "../utils/cart-utils"
 
 interface ProductRelatedProps {
     title: string;
     categoryId: number;
 }
 
-export default function RelatedProduct({...rest}: ProductRelatedProps) {
+export default function RelatedProduct({ ...rest }: ProductRelatedProps) {
     const [products, setProducts] = useState<Product[]>([] as Product[])
     const navigation = useNavigate()
 
-        // `/* &title=${title.toLowerCase()}categoryId=${categoryId} */`
+    // `/* &title=${title.toLowerCase()}categoryId=${categoryId} */`
     useEffect(() => {
         fetch(`https://e-commerce-api-v2.academlo.tech/api/v1/products?categoryId=${rest.categoryId}`, {
             method: 'GET',
@@ -55,7 +56,11 @@ export default function RelatedProduct({...rest}: ProductRelatedProps) {
                                     </p>
                                 </div>
                                 <div className="text-right">
-                                    <button className="p-2 rounded-full bg-primary text-white hover:bg-primary/80 focus:bg-primary/90 hover:scale-125 transition-all ease-in-out duration-300">
+                                    <button className="p-2 rounded-full bg-primary text-white hover:bg-primary/80 focus:bg-primary/90 hover:scale-125 transition-all ease-in-out duration-300"
+                                        onClick={async () => {
+                                            await addToCart(1, product.id);
+                                        }}
+                                    >
                                         <ShoppingBagIcon className="size-6" />
                                     </button>
                                 </div>
