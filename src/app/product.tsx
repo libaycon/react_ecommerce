@@ -87,8 +87,9 @@ export default function ProductPage() {
                         </div>
                     </div>
                     <button className="flex flex-nowrap items-center justify-center bg-primary font-medium text-md md:text-lg text-white lg:px-10 py-2 w-full xl:w-max rounded-md uppercase"
-                        onClick={() => {
+                        onClick={async () => {
                             addToCart(quantity, product.id);
+                            setLoading(false)
                         }}
                     >
                         Agregar a mi bolsa {loading? <ShoppingBagIcon className="size-5 ml-4" />: <ArrowPathIcon className="animate-spin inline-block size-5" /> }
