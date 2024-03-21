@@ -36,7 +36,7 @@ export function CartModal({ open, setOpen, ...rest }: ModalProps) {
     }, [open]);
     //console.log(cartItems);
     return (
-        <div className={`fixed right-0 top-0 flex justify-end bg-black/50 z-10 backdrop-blur-sm overflow-hidden ${open ? 'inset-0' : 'size-0'}`}
+        <div className={`fixed right-0 top-0 flex z-30 justify-end bg-black/50 backdrop-blur-sm overflow-hidden ${open ? 'inset-0' : 'size-0'}`}
             onClick={() => setOpen(false)}
         >
             <div className={`grid grid-rows-[auto,1fr,auto] gap-8 relative right-0 xs:max-w-sm bg-white h-full p-4 xxs:p-8 transition-all ease-in-out duration-600 ${open ? 'w-full translate-x-0' : 'w-0 translate-x-full'}`}
