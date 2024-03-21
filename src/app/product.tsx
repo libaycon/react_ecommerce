@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react"
 import { Link, useLocation, useParams } from "react-router-dom"
 import { Product } from "../types/product-types"
-import { ChevronRightIcon, ChevronLeftIcon, MinusIcon, PlusIcon, ShoppingBagIcon } from "@heroicons/react/24/outline"
+import { ChevronRightIcon, ChevronLeftIcon, MinusIcon, PlusIcon, ShoppingBagIcon, ArrowPathIcon } from "@heroicons/react/24/outline"
 import RelatedProduct  from "./ui-components/related-product"
+import { addToCart } from "./utils/cart-utils"
 
 export default function ProductPage() {
     const { state }: { state: Product } = useLocation();
     const [product, setProduct] = useState<Product>(state);
     const [quantity, setQuantity] = useState<number>(1);
     const [currentImage, setCurrentImage] = useState<number>(0);
+    const [loading, setLoading] = useState<boolean>(true);
     const { id } = useParams();
 
     useEffect(() => {
@@ -84,8 +86,12 @@ export default function ProductPage() {
                             </button>
                         </div>
                     </div>
-                    <button className="flex flex-nowrap items-center justify-center bg-primary font-medium text-md md:text-lg text-white lg:px-10 py-2 w-full xl:w-max rounded-md uppercase">
-                        Agregar a mi bolsa <ShoppingBagIcon className="size-5 ml-4" />
+                    <button className="flex flex-nowrap items-center justify-center bg-primary font-medium text-md md:text-lg text-white lg:px-10 py-2 w-full xl:w-max rounded-md uppercase"
+                        onClick={() => {
+                            addToCart(quantity, product.id);
+                        }}
+                    >
+                        Agregar a mi bolsa {loading? <ShoppingBagIcon className="size-5 ml-4" />: <ArrowPathIcon className="animate-spin inline-block size-5" /> }
                     </button>
                 </div>
             </div>
