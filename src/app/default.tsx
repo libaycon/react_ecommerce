@@ -23,7 +23,7 @@ export default function DefaultPage() {
                         </button>
                     </div>
                 )}
-                <div className="sticky top-8 z-30">
+                <div className="sticky top-8 z-10">
                     <SidebarFilter categories={categories} open={showFilter} setOpen={setShowFilter} />
                 </div>
             </div>
