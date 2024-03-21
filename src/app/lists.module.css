@@ -1,0 +1,11 @@
+.links {
+    &::before {
+        content: '';
+        position: absolute;
+        left: -27px;
+        width: 4px;
+        height: 1rem;
+        border-radius: 2px;
+        background-color: #4f46e5;
+    }
+}
