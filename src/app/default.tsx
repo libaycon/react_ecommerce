@@ -15,13 +15,13 @@ export default function DefaultPage() {
         <div className="grid grid-cols-[auto,1fr] md:gap-8">
             <div className="">
                 {!showFilter && (
-                                    <div className={`sticky -translate-x-2 z-10 top-32 md:hidden ${showFilter ? 'hidded' : ''}`}
-                                    onClick={() => setShowFilter(true)}
-                                >
-                                        <button className='rounded-full size-12 bg-primary text-white'>
-                                            <AdjustmentsHorizontalIcon className="size-8 mx-auto" />
-                                        </button>
-                                </div>
+                    <div className={`sticky -translate-x-2 z-10 w-0 top-32 md:hidden ${showFilter ? 'hidded' : ''}`}
+                        onClick={() => setShowFilter(true)}
+                    >
+                        <button className='rounded-full size-12 bg-primary text-white'>
+                            <AdjustmentsHorizontalIcon className="size-8 mx-auto" />
+                        </button>
+                    </div>
                 )}
                 <div className="sticky top-8 z-30">
                     <SidebarFilter categories={categories} open={showFilter} setOpen={setShowFilter} />
